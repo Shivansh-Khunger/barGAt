@@ -65,10 +65,7 @@ const Landing = () => {
   const [locationState, setLocation] = useLocation();
 
   const mainDivClasses = clsx(
-    "m-4 flex h-[82%] w-screen cursor-default items-center justify-center rounded-xl font-custom_mono transition-all duration-500 will-change-transform",
-
-    // background
-    "gradient-background",
+    "gradient-background m-4 flex h-[82%] w-screen cursor-default items-center justify-center rounded-xl font-custom_mono transition-all duration-500 will-change-transform",
   );
 
   const boardClasses = clsx(
