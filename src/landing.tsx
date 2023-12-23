@@ -65,11 +65,11 @@ const Landing = () => {
   const [locationState, setLocation] = useLocation();
 
   const mainDivClasses = clsx(
-    "gradient-background m-4 flex h-[82%] w-screen cursor-default items-center justify-center rounded-xl font-custom_mono transition-all duration-500 will-change-transform",
+    "gradient-background m-4 flex h-[89%] cursor-default items-center justify-center rounded-xl font-custom_mono transition-all duration-500  will-change-transform md:h-[82%] md:w-screen",
   );
 
   const boardClasses = clsx(
-    "flex items-center justify-center rounded-3xl bg-black p-4 text-7xl text-white transition-all ease-linear will-change-transform dark:bg-transparent dark:text-black",
+    "flex items-center justify-center rounded-3xl bg-black p-4 text-3xl text-white transition-all ease-linear will-change-transform dark:bg-transparent dark:text-black md:text-7xl",
 
     // landing animation
     {
@@ -89,7 +89,7 @@ const Landing = () => {
 
   const boardTextClasses = clsx(
     // general
-    "p-4 text-3xl",
+    "p-4 text-3xl ",
 
     // landing animation
     {
@@ -100,7 +100,7 @@ const Landing = () => {
 
   const buttonTextClasses = clsx(
     // general
-    "my-4 gap-2 text-3xl",
+    "my-4 flex justify-evenly text-2xl md:text-4xl",
 
     // landing animation
     {
@@ -135,6 +135,10 @@ const Landing = () => {
   const handleButtonClick = () => {
     const timer = setTimeout(() => {
       setLocation("/sign-up");
+      landinAnimationStates.updateBoardLandingAnimation(true);
+      landinAnimationStates.updateBoardTextLandingAnimaton(true);
+      landinAnimationStates.updateButtonLandingAnimation(true);
+      landinAnimationStates.updateButtonTextLandingAnimation(true);
     }, 201);
     return () => clearTimeout(timer);
   };
@@ -162,9 +166,7 @@ const Landing = () => {
               </div>
             </div>
             <div className="mt-5 flex flex-col items-center ">
-              <div className={buttonTextClasses}>
-                let's get you on board shall we ?
-              </div>
+              <div className={buttonTextClasses}>you on board ?</div>
               <Button className={buttonClasses} onClick={handleButtonClick}>
                 {" "}
                 <div className="ml-2 scale-150">

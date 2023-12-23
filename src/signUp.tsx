@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { produce } from "immer";
 import { useEffect } from "react";
 import { create } from "zustand";
+import { GeneralDataForm } from "./components/signUp/from";
 
 type transitionType = {
   transition: boolean;
@@ -21,22 +22,16 @@ const transitionStore = create<transitionType>((set) => ({
 const SignUp = () => {
   const transitionStates = transitionStore();
 
-  const mainDivClasses = clsx(
-    " m-4  flex w-screen cursor-default items-center justify-center rounded-xl font-custom_mono transition-all duration-500 will-change-transform",
+  const bgDivClasses = clsx(
+    " m-4 flex w-screen items-center justify-center rounded-xl font-sans transition-all duration-500 will-change-transform",
 
     // background
-    { "gradient-background h-[82%]": transitionStates.transition },
+    { "gradient-background h-[89%] md:h-[82%]": transitionStates.transition },
 
     {
-      "h-[92%] bg-gradient-to-br from-[#52a0ff]  to-[#e73c7e]":
+      "h-[92%] bg-gradient-to-br from-[#3a66a3] via-[#72408a] to-[#b8538d]":
         !transitionStates.transition,
     },
-  );
-
-  const blackLayerDivClasses = clsx(
-    "absolute z-10 m-4 w-screen rounded-xl bg-black",
-    { "h-[82%] opacity-0": transitionStates.transition },
-    { "h-[92%] opacity-30": !transitionStates.transition },
   );
 
   useEffect(() => {
@@ -49,8 +44,9 @@ const SignUp = () => {
   return (
     <>
       <div className="flex h-screen w-screen items-center justify-center bg-black">
-        <div className={blackLayerDivClasses}></div>
-        <div className={mainDivClasses}></div>
+        <div className={bgDivClasses}>
+          <GeneralDataForm />
+        </div>
       </div>
     </>
   );
